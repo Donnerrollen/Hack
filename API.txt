@@ -1,0 +1,238 @@
+# API Documentation
+
+## Sign In
+Endpoint: `/signin`  
+Method: `GET`
+
+### Request
+#### Parameters
+- `login` (string): User's login.
+- `password` (string): User's password.
+
+### Response
+- Success (200 OK):
+  - Body:
+    ```json
+    {
+      "AuthKey": "<generated_auth_key>"
+    }
+    ```
+- Error (400 Bad Request):
+  - Body:
+    ```json
+    {
+      "error": "User not found"
+    }
+    ```
+
+---
+
+## Get Table
+Endpoint: `/GetTable`  
+Method: `GET`
+
+### Request
+#### Headers
+- `AuthKey` (string): Authentication token.
+
+### Response
+- Success (200 OK):
+  - Body:
+    ```json
+    {
+      "table": "<table_data>"
+    }
+    ```
+- Error (401 Unauthorized):
+  - Body:
+    ```json
+    {
+      "error": "User not authorized"
+    }
+    ```
+
+---
+
+## Accept Request
+Endpoint: `/AcceptRequest`  
+Method: `PUT`
+
+### Request
+#### Headers
+- `AuthKey` (string): Authentication token.
+
+### Response
+- Success (200 OK):
+  - Body:
+    ```json
+    {
+      "access": "true"
+    }
+    ```
+- Error (401 Unauthorized or 403 Forbidden):
+  - Body:
+    ```json
+    {
+      "error": "User not authorized" or "Request in work"
+    }
+    ```
+
+---
+
+## Close Request
+Endpoint: `/CloseRequest`  
+Method: `PUT`
+
+### Request
+#### Headers
+- `AuthKey` (string): Authentication token.
+
+### Response
+- Success (200 OK):
+  - Body:
+    ```json
+    {
+      "access": "true"
+    }
+    ```
+- Error (401 Unauthorized or 403 Forbidden):
+  - Body:
+    ```json
+    {
+      "error": "User not authorized" or "Request in work"
+    }
+    ```
+
+---
+
+## Insert Request
+Endpoint: `/InsertRequest`  
+Method: `POST`
+
+### Request
+#### Body
+- `TextCom` (string): Text of the request.
+
+### Response
+- Success (200 OK):
+  - Body:
+    ```json
+    {
+      "access": "true"
+    }
+    ```
+- Error (400 Bad Request):
+  - Body:
+    ```json
+    {
+      "error": "Text is empty"
+    }
+    ```
+
+---
+
+## Create Chat With Tech Support
+Endpoint: `/CreateChatWithTechsup`  
+Method: `POST`
+
+### Request
+#### Headers
+- `AuthKey` (string): Authentication token.
+
+### Response
+- Success (200 OK):
+  - Body:
+    ```json
+    {
+      "access": "true"
+    }
+    ```
+- Error (401 Unauthorized or 400 Bad Request):
+  - Body:
+    ```json
+    {
+      "error": "User not authorized" or "User doesn't exist"
+    }
+    ```
+
+---
+
+## Send Message
+Endpoint: `/SendMessage`  
+Method: `POST`
+
+### Request
+#### Headers
+- `AuthKey` (string): Authentication token.
+
+### Response
+- Success (200 OK):
+  - Body:
+    ```json
+    {
+      "access": "true"
+    }
+    ```
+- Error (401 Unauthorized or 400 Bad Request):
+  - Body:
+    ```json
+    {
+      "error": "User not authorized" or "Chat doesn't exist"
+    }
+    ```
+
+---
+
+## Get Chats
+Endpoint: `/GetChats`  
+Method: `GET`
+
+### Request
+#### Headers
+- `AuthKey` (string): Authentication token.
+
+### Response
+- Success (200 OK):
+  - Body:
+    ```json
+    {
+      "chats": "<chats_data>"
+    }
+    ```
+- Error (401 Unauthorized):
+  - Body:
+    ```json
+    {
+      "error": "User not authorized"
+    }
+    ```
+
+---
+
+## Get Messages in Chat
+Endpoint: `/GetMessagesInChat`  
+Method: `GET`
+
+### Request
+#### Headers
+- `AuthKey` (string): Authentication token.
+
+### Response
+- Success (200 OK):
+  - Body:
+    ```json
+    {
+      "messages": "<messages_data>"
+    }
+    ```
+- Error (401 Unauthorized or 400 Bad Request):
+  - Body:
+    ```json
+    {
+      "error": "User not authorized" or "Chat doesn't exist"
+    }
+    ```
+
+---
+
+Remember to replace `<generated_auth_key>`, `<table_data>`, `<chats_data>`, and `<messages_data>` with actual data returned from your service functions.
